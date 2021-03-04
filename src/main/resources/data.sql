@@ -1,0 +1,1 @@
+INSERT INTO USR VALUES (1, 'admin', 'admin');
