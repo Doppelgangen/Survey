@@ -89,12 +89,17 @@ public class MainController {
     public @ResponseBody String addSurvey(
             @RequestParam("surveyName") String s1,
             @RequestParam("surveyField") String s2,
-            @RequestParam("surveyField2") String s3
+            @RequestParam("surveyField2") String s3,
+            @RequestParam("flexRadioDefault") String s4
     ){
         String s = "";
         s+=s1;
         s+=s2;
         s+=s3;
+        if (s4.equals("radio"))
+        s+=true;
+        else
+        s+=false;
         return s;
     }
 

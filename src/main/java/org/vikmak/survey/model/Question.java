@@ -22,6 +22,9 @@ public class Question {
     @ElementCollection(targetClass = Integer.class, fetch = FetchType.LAZY)
     private List<Integer> choisesId;
 
+    @Column(name = "isRadioButton")
+    private boolean isRadioButton;
+
     public int getId() {
         return id;
     }
@@ -52,5 +55,13 @@ public class Question {
 
     public void setSurveyId(int surveyId) {
         this.surveyId = surveyId;
+    }
+
+    public boolean isRadioButton() {
+        return isRadioButton;
+    }
+
+    public void setRadioButton(boolean radioButton) {
+        isRadioButton = radioButton;
     }
 }

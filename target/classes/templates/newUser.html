@@ -5,16 +5,20 @@
     <title>Create User</title>
 </head>
 <body>
-<div th:insert="/parts/navbar :: navbar"></div>
-<form th:method="post" th:action="@{/addUser}" th:object="${user}">
-    <label for="name">Name</label>
-    <input type="text" id="name" th:field="*{name}"/>
-    <br/>
-    <label for="password">Password</label>
-    <input type="text" id="password" th:field="*{password}"/>
-    <br/>
-    <input type="submit" value="Create">
-</form>
-<div th:insert="/parts/footer::footer"/>
+<div class="mx-3">
+    <div th:insert="/parts/navbar :: navbar"/>
+    <form th:method="post" th:action="@{/addUser}" th:object="${user}">
+        <div class="form-floating my-3">
+        <input class="form-control my-auto" style="width: 600px;" type="text" id="name" th:field="*{name}" placeholder="Login"/>
+        <label for="name">Login</label>
+        </div>
+        <div class="form-floating my-3">
+        <input class="form-control my-auto" style="width: 600px;" type="text" id="password" th:field="*{password}" placeholder="Password"/>
+        <label class="form-label my-auto" for="password">Password</label>
+        </div>
+        <input class="btn btn-primary my-auto" type="submit" value="Create">
+    </form>
+    <div th:insert="/parts/footer::footer"/>
+</div>
 </body>
 </html>
