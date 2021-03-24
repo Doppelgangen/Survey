@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="parts/header :: header"/>
+    <title>Survey</title>
+</head>
+<body>
+<div class="mx-3">
+    <div th:insert="/parts/navbar :: navbar"/>
+    <form th:method="post" th:action="@{/surveys/testModelPost}" th:object="${choice}">
+        <div class="my-3">
+            <input class="form-control my-auto" style="width: 600px;" type="text" th:field="*{choiceName}"/>
+        </div>
+        <input class="btn btn-primary my-auto" type="submit" value="Create">
+    </form>
+    <div th:insert="/parts/footer :: footer"/>
+</div>
+</body>
+</html>

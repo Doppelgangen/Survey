@@ -6,19 +6,22 @@ import javax.persistence.*;
  * @author Viktor Makarov
  */
 @Entity
-public class Choise {
+public class Choice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "choiseName")
-    private String choiseName;
+    @Column(name = "choiceName")
+    private String choiceName;
 
     @Column(name = "questionId")
     private int questionId;
 
     @Column(name = "userChecked")
     private int userChecked = -1;
+
+    public Choice() {
+    }
 
     public int getId() {
         return id;
@@ -28,12 +31,12 @@ public class Choise {
         this.id = id;
     }
 
-    public String getChoiseName() {
-        return choiseName;
+    public String getChoiceName() {
+        return choiceName;
     }
 
-    public void setChoiseName(String choiseName) {
-        this.choiseName = choiseName;
+    public void setChoiceName(String choiseName) {
+        this.choiceName = choiseName;
     }
 
     public int getQuestionId() {

@@ -14,10 +14,17 @@
         You have been logged out.
     </div>
     <form th:action="@{/login}" method="post">
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div class="form-floating my-3">
+            <input class="form-control my-auto" style="width: 600px;" type="text" id="name" placeholder="Login" name="username"/> <!--th:field="*{name}"-->
+            <label for="name">Login</label>
+        </div>
+        <div class="form-floating my-3">
+            <input class="form-control my-auto" style="width: 600px;" type="text" id="password" placeholder="Password" name="password"/> <!--th:field="*{password}"-->
+            <label class="form-label my-auto" for="password">Password</label>
+        </div>
         <div><input type="submit" value="Sign In"/></div>
     </form>
+    <a href="/users/newUser">Add new user</a>
     <div th:insert="/parts/footer::footer"/>
 </div>
 </body>

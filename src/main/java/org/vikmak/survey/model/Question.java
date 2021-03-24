@@ -18,7 +18,7 @@ public class Question {
     @Column(name = "surveyId")
     private int surveyId;
 
-    @Column(name = "choises")
+    @Column(name = "choices")
     @ElementCollection(targetClass = Integer.class, fetch = FetchType.LAZY)
     private List<Integer> choisesId;
 

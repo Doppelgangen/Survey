@@ -1,10 +1,10 @@
 package org.vikmak.survey.repos;
 
 import org.springframework.data.repository.CrudRepository;
-import org.vikmak.survey.model.Choise;
+import org.vikmak.survey.model.Choice;
 
 /**
  * @author Viktor Makarov
  */
-public interface ChoiseRepository extends CrudRepository<Choise, Integer> {
+public interface ChoiceRepository extends CrudRepository<Choice, Integer> {
 }

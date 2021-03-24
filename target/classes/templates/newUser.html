@@ -7,7 +7,7 @@
 <body>
 <div class="mx-3">
     <div th:insert="/parts/navbar :: navbar"/>
-    <form th:method="post" th:action="@{/addUser}" th:object="${user}">
+    <form th:method="post" th:action="@{/users/addUser}" th:object="${user}">
         <div class="form-floating my-3">
         <input class="form-control my-auto" style="width: 600px;" type="text" id="name" th:field="*{name}" placeholder="Login"/>
         <label for="name">Login</label>

@@ -7,7 +7,7 @@
 <body>
 <div class="mx-3">
     <div th:insert="/parts/navbar :: navbar"></div>
-    <form th:method="post" th:action="@{/addSurvey}">
+    <form th:method="post" th:action="@{/surveys/addSurvey}" th:object="${choices}">
         <div class="my-3">
         <label class="form-label my-auto" for="surveyName">Survey name</label>
         <input class="form-control my-auto" style="width: 600px;" type="text" id="surveyName" name="surveyName"/>
@@ -25,8 +25,10 @@
             </label>
         </div>
         <div class="my-3">
-        <label class="form-label my-auto" for="surveyField">Variants</label>
-        <input class="form-control my-auto" style="width: 600px;" type="text" id="surveyField" name="surveyField"/>
+        <label class="form-label my-auto" >Choices</label>
+<!--            <div th:each="choice : ${choices}">-->
+<!--                <input class="form-control my-auto" style="width: 600px;" type="text" name="choices"/>-->
+<!--            </div>-->
         </div>
         <div class="my-3">
         <input class="form-control my-auto" style="width: 600px;" type="text" id="surveyField2" name="surveyField2"/>
