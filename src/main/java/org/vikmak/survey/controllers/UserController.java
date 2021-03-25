@@ -29,28 +29,13 @@ public class UserController {
     private ChoiceRepository choiceRepository;
 
 
-    @PostMapping(path="/add") // Map ONLY POST Requests
+    @PostMapping(path="/add")
     public @ResponseBody
     String addNewUser (@RequestParam String name) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
-        User n = new User();
-        n.setName(name);
-        userRepository.save(n);
-
-        Survey survey = new Survey();
-        survey.setAuthor(n.getId());
-        surveyRepository.save(survey);
-
-        Question question = new Question();
-        question.setSurveyId(survey.getId());
-        questionRepository.save(question);
-
-        Choice choice = new Choice();
-        choice.setQuestionId(question.getId());
-        choiceRepository.save(choice);
-        return "Saved " + n.getId() + " " + n.getPassword();
+        User user = new User();
+        user.setName(name);
+        userRepository.save(user);
+        return "Saved " + user.getId() + " " + user.getPassword();
     }
 
     @GetMapping(path="/all")

@@ -1,7 +1,7 @@
 package org.vikmak.survey.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Viktor Makarov
@@ -15,15 +15,18 @@ public class Question {
     @Column(name = "questionName")
     private String questionName;
 
-    @Column(name = "surveyId")
-    private int surveyId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
 
-    @Column(name = "choices")
-    @ElementCollection(targetClass = Integer.class, fetch = FetchType.LAZY)
-    private List<Integer> choisesId;
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Choice> choices;
 
-    @Column(name = "isRadioButton")
-    private boolean isRadioButton;
+    @Column(name = "radioButton")
+    private boolean radioButton = false;
+
+    public Question() {
+    }
 
     public int getId() {
         return id;
@@ -41,27 +44,37 @@ public class Question {
         this.questionName = questionName;
     }
 
-    public List<Integer> getChoisesId() {
-        return choisesId;
-    }
-
-    public void setChoisesId(List<Integer> choisesId) {
-        this.choisesId = choisesId;
-    }
-
-    public int getSurveyId() {
-        return surveyId;
-    }
-
-    public void setSurveyId(int surveyId) {
-        this.surveyId = surveyId;
-    }
-
-    public boolean isRadioButton() {
-        return isRadioButton;
+    public boolean getRadioButton() {
+        return radioButton;
     }
 
     public void setRadioButton(boolean radioButton) {
-        isRadioButton = radioButton;
+        this.radioButton = radioButton;
+    }
+
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(Survey survey) {
+        this.survey = survey;
+    }
+
+    public Set<Choice> getChoises() {
+        return choices;
+    }
+
+    public void setChoises(Set<Choice> choicesId) {
+        this.choices = choicesId;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", questionName='" + questionName + '\'' +
+                ", choices=" + choices +
+                ", radioButton=" + radioButton +
+                '}';
     }
 }

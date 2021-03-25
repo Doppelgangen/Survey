@@ -12,15 +12,21 @@ public class Choice {
     private int id;
 
     @Column(name = "choiceName")
-    private String choiceName;
+    private String choiceName = "noName";
 
-    @Column(name = "questionId")
-    private int questionId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id")
+    private Question question;
 
     @Column(name = "userChecked")
     private int userChecked = -1;
 
     public Choice() {
+    }
+
+    public Choice(String choiceName, Question question) {
+        this.choiceName = choiceName;
+        this.question = question;
     }
 
     public int getId() {
@@ -35,16 +41,8 @@ public class Choice {
         return choiceName;
     }
 
-    public void setChoiceName(String choiseName) {
-        this.choiceName = choiseName;
-    }
-
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setChoiceName(String choiceName) {
+        this.choiceName = choiceName;
     }
 
     public int getUserChecked() {
@@ -53,5 +51,22 @@ public class Choice {
 
     public void setUserChecked(int userChecked) {
         this.userChecked = userChecked;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    @Override
+    public String toString() {
+        return "Choice{" +
+                "id=" + id +
+                ", choiceName='" + choiceName + '\'' +
+                ", userChecked=" + userChecked +
+                '}';
     }
 }
