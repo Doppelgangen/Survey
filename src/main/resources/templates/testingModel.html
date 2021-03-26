@@ -7,18 +7,28 @@
 <body>
 <div class="mx-3">
     <div th:insert="/parts/navbar :: navbar"/>
-    <!--    <div th:each="choice : ${choices}">-->
-    <!--        <a th:href="@{/}" th:text="${choice.toString()}"/>-->
-    <!--    </div>-->
     <div th:each="survey : ${surveys}">
-        <p th:text="${survey.toString()}"></p>
-    </div>
-    <div th:each="question : ${questions}">
-        <a th:href="@{/}" th:text="${question.toString()}"/>
-        <br/>
-        <div th:each="choice: ${question.getChoises()}">
-            <a th:href="@{/}" th:text="${choice.toString()}"/>
-        </div>
+        <form th:method="post" th:action="@{/surveys/save/all}" th:object="${survey}">
+            <!--            <input type="text" th:value="${survey.name}"/>-->
+            <label class="form-label my-auto" for="surveyName">Survey name</label>
+            <input th:name="name" th:value="${survey.name}" id="surveyName"/>
+            <input type="hidden" th:name="surveyId" th:value="${survey.id}"/>
+            <input type="hidden" th:name="id" th:value="${survey.id}"/>
+            <div th:each="question : ${survey.questions}">
+                <label class="form-label my-auto" for="questionName">Question name</label>
+                <input th:name="questionName" th:value="${question.questionName}" id="questionName"/>
+                <input type="hidden" th:name="questionId" th:value="${question.id}"/>
+                <div th:each="choice : ${question.choices}">
+                    <label class="form-label my-auto" for="choiceName">Choice name</label>
+                    <input th:name="choiceName" th:value="${choice.choiceName}" id="choiceName"/>
+                    <input type="hidden" th:name="choicesId" th:value="${choice.id}"/>
+                    <!--            <div th:each="question : ${survey.getQuestions()} ">-->
+                    <!--                <input type="text" th:text="${question.getQuestionName()}">-->
+                    <!--            </div>-->
+                </div>
+            </div>
+            <input class="btn btn-secondary my-auto" type="submit" value="Save">
+        </form>
     </div>
     <div th:insert="/parts/footer :: footer"/>
 </div>

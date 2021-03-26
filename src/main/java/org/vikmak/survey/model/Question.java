@@ -1,7 +1,7 @@
 package org.vikmak.survey.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Viktor Makarov
@@ -20,7 +20,7 @@ public class Question {
     private Survey survey;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Choice> choices;
+    private List<Choice> choices;
 
     @Column(name = "radioButton")
     private boolean radioButton = false;
@@ -60,12 +60,12 @@ public class Question {
         this.survey = survey;
     }
 
-    public Set<Choice> getChoises() {
+    public List<Choice> getChoices() {
         return choices;
     }
 
-    public void setChoises(Set<Choice> choicesId) {
-        this.choices = choicesId;
+    public void setChoices(List<Choice> choices) {
+        this.choices = choices;
     }
 
     @Override

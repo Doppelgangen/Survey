@@ -2,7 +2,6 @@ package org.vikmak.survey.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Viktor Makarov
@@ -22,7 +21,7 @@ public class Survey {
     private User author;
 
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Question> questions;
+    private List<Question> questions;
 
     @Column(name = "userPassed")
     private int passedId = -1;
@@ -66,11 +65,11 @@ public class Survey {
         this.author = author;
     }
 
-    public Set<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 
